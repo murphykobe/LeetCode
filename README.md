@@ -1,12 +1,9 @@
 # :pencil2: Leetcode Solutions with Java
 Update time:  2019-06-19 23:08:48
 
-Auto created by [leetcode_generate](https://github.com/bonfy/leetcode)
 
 I have solved **208   /   1031** problems
 while there are **157** problems still locked.
-
-If you want to use this tool please follow this [Usage Guide](https://github.com/bonfy/leetcode/blob/master/README_leetcode_generate.md)
 
 If you have any question, please give me an [issue](https://github.com/murphykobe/Data-Structure/issues).
 
