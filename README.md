@@ -3,7 +3,6 @@ Update time:  2019-06-20 23:08:48
 
 
 I have solved **214   /   1031** problems
-while there are **157** problems still locked.
 
 If you have any question, please give me an [issue](https://github.com/murphykobe/LeetCode/issues).
 
