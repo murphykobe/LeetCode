@@ -29,24 +29,13 @@
 
 class Solution {
     public int climbStairs(int n) {
-        int n1=1;
-        int n2=2;
-        
-        if(n==1){
-            return 1;
-            
-        }
-        if(n==2){
-            return 2;
-        }
-        
+        if(n==1) return 1;
+        int[] dp=new int[n+1];
+        dp[1]=1;
+        dp[2]=2;
         for(int i=3;i<=n;i++){
-            int temp=n2;
-            n2=n2+n1;
-            n1=temp;
+            dp[i]=dp[i-1]+dp[i-2];
         }
-        
-        return n2;
-        
-    }
+        return dp[n];
+    }   
 }
