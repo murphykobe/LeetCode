@@ -22,18 +22,23 @@
 
 class Solution {
     public void sortColors(int[] nums) {
-        int[] res=nums.clone();
-        Arrays.fill(nums,1);
-        int idx=0;
-        int idy=nums.length-1;
-        for(int i=0;i<res.length;i++){
-            if(res[i]==2){
-                nums[idy]=2;
-                idy--;
-            }
-            if(res[i]==0){
-                nums[idx]=0;
-                idx++;
+        int i=0;
+        int j=nums.length-1;
+        int k=0;
+        while(k<=j){
+            if(nums[k]==0){
+                int temp=nums[i];
+                nums[k]=temp;
+                nums[i]=0;
+                i++;
+                k++;
+            }else if(nums[k]==2){
+                int temp=nums[j];
+                nums[k]=temp;
+                nums[j]=2;
+                j--;   
+            }else{
+                k++;
             }
         }
     }
