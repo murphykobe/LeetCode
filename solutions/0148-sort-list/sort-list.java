@@ -1,20 +1,3 @@
-// Sort a linked list in O(n log n) time using constant space complexity.
-//
-// Example 1:
-//
-//
-// Input: 4->2->1->3
-// Output: 1->2->3->4
-//
-//
-// Example 2:
-//
-//
-// Input: -1->5->3->4->0
-// Output: -1->0->3->4->5
-//
-
-
 /**
  * Definition for singly-linked list.
  * public class ListNode {
@@ -25,42 +8,52 @@
  */
 class Solution {
     public ListNode sortList(ListNode head) {
-        if(head==null || head.next==null) return head;
-        ListNode slow=head, fast=head, prev=null;
-        while(fast!=null && fast.next!=null){
-            prev=slow;
-            slow=slow.next;
-            fast=fast.next.next;
+        ListNode dummy=new ListNode(0);
+        dummy.next=head;
+        int n=0;
+        while(head!=null){
+            head=head.next;
+            n++;
         }
-        
-        prev.next=null;
-        
-        ListNode l1=sortList(head);
-        ListNode l2=sortList(slow);
-        
-        return merge(l1,l2);
-    }   
-    
-    public ListNode merge(ListNode a,ListNode b){
-        ListNode pre=new ListNode(0);
-        ListNode p=pre;
-        while(a!=null && b!=null){
-            if(a.val>b.val){
-                p.next=b;
-                b=b.next;
-            }else{
-                p.next=a;
-                a=a.next;
+        for(int step=1;step<n;step<<=1){
+            ListNode cur=dummy.next;
+            ListNode prev=dummy;
+            while(cur!=null){
+                ListNode left=cur;
+                ListNode right=split(cur,step);
+                cur=split(right,step);
+                prev=merge(left,right,prev);
             }
-            p=p.next;
         }
-        if(a==null){
-            p.next=b;
-        }
-        if(b==null){
-            p.next=a;
-        }
-        return pre.next;
         
+        return dummy.next;
+    }
+    
+    public ListNode split(ListNode head, int step){
+        if(head==null) return null;
+        for(int i=1;head.next!=null && i<step;i++){
+            head=head.next;
+        }
+        ListNode right=head.next;
+        head.next=null;
+        return right;
+    }
+    
+    public ListNode merge(ListNode left,ListNode right,ListNode prev){
+        ListNode cur=prev;
+        while(left!=null && right!=null){
+            if(left.val>right.val){
+                cur.next=right;
+                right=right.next;
+            }else{
+                cur.next=left;
+                left=left.next;
+            }
+            cur=cur.next;
+        }
+        if(left!=null) cur.next=left;
+        else if(right!=null) cur.next=right;
+        while(cur.next!=null) cur=cur.next;
+        return cur;
     }
 }
