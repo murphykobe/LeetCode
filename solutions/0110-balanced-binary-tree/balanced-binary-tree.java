@@ -47,20 +47,21 @@
  * }
  */
 class Solution {
-    public boolean Blanced=true;
+    boolean flag=true;
     public boolean isBalanced(TreeNode root) {
-        helper(root);
-        return Blanced;
+        int t=depth(root);
+        return flag;
     }
     
-    public int helper(TreeNode root){
+    public int depth(TreeNode root){
         if(root==null) return 0;
-        int left=helper(root.left);
-        int right=helper(root.right);
-            if(Math.abs(right-left)>1){
-                Blanced=false;
-            }
-        return left>right?left+1:right+1;
-    }
 
+        int l=depth(root.left);
+        int r=depth(root.right);
+        
+        if(Math.abs(l-r)>1) flag=false;
+        
+        return Math.max(l,r)+1;
+    }
+    
 }
