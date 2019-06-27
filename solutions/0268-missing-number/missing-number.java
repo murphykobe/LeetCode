@@ -20,11 +20,11 @@
 
 class Solution {
     public int missingNumber(int[] nums) {
-        int len = nums.length;
-        int sumExp = len * (len + 1) /2, sumOr = 0;
-        for(int i=0; i<nums.length; i++) {
-            sumOr += nums[i];
+        int res=nums.length;
+        for(int i=0;i<nums.length;i++){
+            res^=i;
+            res^=nums[i];
         }
-        return sumExp - sumOr;
+        return res;
     }
 }
