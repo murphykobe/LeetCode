@@ -19,12 +19,11 @@ class Solution {
         int t=0;
         for(int i=0;i<=nums.length-1;i++){
             if(nums[i]!=0){
+                int temp=nums[t];
                 nums[t]=nums[i];
+                nums[i]=temp;
                 t++;
             }
-        }
-        for (int i=t;i<=nums.length-1;i++){
-            nums[i]=0;
         }
     }
 }
