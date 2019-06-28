@@ -31,49 +31,48 @@
  *     TreeNode(int x) { val = x; }
  * }
  */
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode(int x) { val = x; }
+ * }
+ */
 public class Codec {
-    private static final String spliter = ",";
-    private static final String N = "X";
+
     // Encodes a tree to a single string.
     public String serialize(TreeNode root) {
         StringBuilder sb=new StringBuilder();
-        buildstring(root,sb);
-        return sb.toString();
+        return serial(root,sb).toString();
     }
     
-    public void buildstring(TreeNode root, StringBuilder sb){
-        if(root==null){
-            sb.append(N).append(spliter);
-        }else{
-            sb.append(root.val).append(spliter);
-
-            buildstring(root.left,sb);
-            buildstring(root.right,sb);
-        }   
-
+    public StringBuilder serial(TreeNode root,StringBuilder sb){
+        if(root==null) return sb.append('#');
+        sb.append(root.val).append(',');
+        serial(root.left,sb).append(',');
+        serial(root.right,sb);
+        return sb;
+        
     }
-
+    
+    public TreeNode deserial(Deque<String> queue){
+        String val=queue.poll();
+        if(val.equals("#")) return null;
+        TreeNode root=new TreeNode(Integer.valueOf(val));
+        root.left=deserial(queue);
+        root.right=deserial(queue);
+        return root;
+        
+    }
     // Decodes your encoded data to tree.
     public TreeNode deserialize(String data) {
-        Deque<String> nodes = new LinkedList<>();
-        nodes.addAll(Arrays.asList(data.split(spliter)));
-        return buildTree(nodes);
-    }
-    
-    public TreeNode buildTree(Deque<String> nodes){
-        String val=nodes.remove();
-        
-        if(val.equals(N)){
-            return null;
-        }else{
-            TreeNode root=new TreeNode(Integer.valueOf(val));
-            root.left=buildTree(nodes);
-            root.right=buildTree(nodes);
-            return root;
-        }
-
+        return deserial(new LinkedList<>(Arrays.asList(data.split(","))));
     }
 }
+
+
 
 // Your Codec object will be instantiated and called as such:
 // Codec codec = new Codec();
