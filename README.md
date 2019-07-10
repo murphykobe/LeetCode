@@ -1,8 +1,8 @@
 # :pencil2: Leetcode Solutions with Java
-Update time:  2019-06-20 23:08:48
+Update time:  2019-07-09 23:08:48
 
 
-I have solved **214   /   1031** problems
+I have solved **217   /   1113** problems
 
 If you have any question, please give me an [issue](https://github.com/murphykobe/LeetCode/issues).
 
@@ -160,6 +160,7 @@ If you are loving solving problems in leetcode, please contact me to enjoy it to
 |538|[convert-bst-to-greater-tree](https://leetcode.com/problems/convert-bst-to-greater-tree)|[Java](https://github.com/murphykobe/LeetCode/blob/master/solutions/0538-convert-bst-to-greater-tree/convert-bst-to-greater-tree.java)|[:memo:](https://leetcode.com/articles/convert-bst-to-greater-tree/)|Easy|
 |543|[diameter-of-binary-tree](https://leetcode.com/problems/diameter-of-binary-tree)|[Java](https://github.com/murphykobe/LeetCode/blob/master/solutions/0543-diameter-of-binary-tree/diameter-of-binary-tree.java)|[:memo:](https://leetcode.com/articles/diameter-of-binary-tree/)|Easy|
 |557|[reverse-words-in-a-string-iii](https://leetcode.com/problems/reverse-words-in-a-string-iii)|[Java](https://github.com/murphykobe/LeetCode/blob/master/solutions/0557-reverse-words-in-a-string-iii/reverse-words-in-a-string-iii.java)|[:memo:](https://leetcode.com/articles/reverse-words-in-a-string/)|Easy|
+|557|[permutation-in-string](https://leetcode.com/problems/permutation-in-string)|[Java](https://github.com/murphykobe/LeetCode/blob/master/solutions/0567-permutation-in-string/permutation-in-string.java)|Medium|
 |560|[subarray-sum-equals-k](https://leetcode.com/problems/subarray-sum-equals-k)|[Java](https://github.com/murphykobe/LeetCode/blob/master/solutions/0560-subarray-sum-equals-k/subarray-sum-equals-k.java)|[:memo:](https://leetcode.com/articles/subarray-sum-equals-k/)|Medium|
 |561|[array-partition-i](https://leetcode.com/problems/array-partition-i)|[Java](https://github.com/murphykobe/LeetCode/blob/master/solutions/0561-array-partition-i/array-partition-i.java)|[:memo:](https://leetcode.com/articles/array-partitioning-i/)|Easy|
 |566|[reshape-the-matrix](https://leetcode.com/problems/reshape-the-matrix)|[Java](https://github.com/murphykobe/LeetCode/blob/master/solutions/0566-reshape-the-matrix/reshape-the-matrix.java)|[:memo:](https://leetcode.com/articles/reshape-the-matrix/)|Easy|
