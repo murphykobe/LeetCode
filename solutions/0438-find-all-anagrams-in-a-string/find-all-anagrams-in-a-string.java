@@ -36,29 +36,39 @@
 
 class Solution {
     public List<Integer> findAnagrams(String s, String p) {
-        int a=s.length();
-        int b=p.length();
-        List<Integer> res=new ArrayList<>();
-        for(int i=0;i<a-b+1;i++){
-            if(isAnagrams(s.substring(i,i+b),p)){
-                res.add(i);
+        List<Integer> result=new LinkedList<>();
+        if(p.length()>s.length()) return result;
+        Map<Character,Integer> map=new HashMap();
+        for(char c:p.toCharArray()){
+            map.put(c,map.getOrDefault(c,0)+1);
+        }
+        
+        int counter=map.size();
+        int start=0,end=0;
+        int len=Integer.MAX_VALUE;
+        
+        while(end<s.length()){
+            char c=s.charAt(end);
+            if(map.containsKey(c)){
+                map.put(c,map.get(c)-1);
+                if(map.get(c)==0) counter--;
+            }
+            end++;
+            while(counter==0){
+                char d=s.charAt(start);
+                if(map.containsKey(d)){
+                    map.put(d,map.get(d)+1);
+                    if(map.get(d)>0) counter++;
+                }
+                if(end-start==p.length()){
+                    result.add(start);
+                }
+                start++;
             }
         }
-        return res;
-    }
-    
-    public boolean isAnagrams(String a, String b){
-        if (a == null || b == null || a.length() != b.length()) return false;
-        int[] dict = new int[26];
-        for (int i = 0; i < a.length(); i++) {
-            char ch = a.charAt(i);
-            dict[ch-'a']++;
-        }
-        for (int i = 0; i < b.length(); i++) {
-            char ch = b.charAt(i);
-            dict[ch-'a']--;
-            if (dict[ch-'a'] < 0) return false;
-        }
-        return true;
+        
+        return result;
+        
+        
     }
 }
