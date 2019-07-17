@@ -27,7 +27,6 @@
 //
 //
 
-
 /**
  * Definition for a binary tree node.
  * public class TreeNode {
@@ -40,14 +39,23 @@
 class Solution {
     public int pathSum(TreeNode root, int sum) {
         if (root == null) return 0;
-        return dfs(root,sum)+pathSum(root.left,sum)+pathSum(root.right,sum);
+        Map<Integer,Integer> map=new HashMap<Integer,Integer>();
+        map.put(0,1);
+        return helper(root,sum,0,map);
     }
     
-    public int dfs(TreeNode root,int sum) {
-        if(root==null) return 0;
-        int mid=(root.val==sum)?1:0;
-        int left=dfs(root.left,sum-root.val);
-        int right=dfs(root.right,sum-root.val);
-        return mid+left+right;
+    public int helper(TreeNode root,int sum, int currSum,Map<Integer,Integer> map){
+        if(root==null){
+            return 0;
+        }
+
+        currSum+=root.val;
+        int res=map.getOrDefault(currSum-sum,0);
+        
+        map.put(currSum,map.getOrDefault(currSum,0)+1);
+        res+=helper(root.left,sum,currSum,map)+helper(root.right,sum,currSum,map);
+        map.put(currSum,map.get(currSum)-1);
+        return res;
+    
     }
 }
